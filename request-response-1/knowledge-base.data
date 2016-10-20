@@ -1,0 +1,8 @@
+- "Hello, what's your name!", "Hello, my name is T, i'm T-BOT"
+- "Hello,(.*)", "Hi, nice to meet you"
+
+- "Hi, my name is (\w+)", "Hi, \1! Nice to meet you!"
+
+- "How are you today?", "Feeling very well"
+
+- "Where do you live?", "In your laptop!"

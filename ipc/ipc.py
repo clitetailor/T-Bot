@@ -8,7 +8,7 @@ def create_new_console():
 def main():
 	create_new_console()
 	
-	client   = Client(('localhost', 6000), authkey=b"bulb_city")
+	client = Client(('localhost', 6000), authkey=b"bulb_city")
 	
 	print()
 	

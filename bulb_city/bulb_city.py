@@ -2,19 +2,15 @@ import threading
 import queue
 import json
 import time
-import pprint
 import csv
 
 
-
 class BulbCity(object):
-	
 	def __init__(self):
-		self.bulb = []
+		self.bulbs = []
 		self.queue = queue.Queue()
 		self.threads = []
 		self.electricity = threading.Event()
-		self.thread_num = 0
 		return
 	
 	def load_json(self, file_name):
@@ -44,7 +40,7 @@ class BulbCity(object):
 		
 		for i in range(vertices):
 			new_bulb = threading.Semaphore(0)
-			self.bulb.append(new_bulb)
+			self.bulbs.append(new_bulb)
 		
 		edges = self.graph_info["edges"]
 		
@@ -70,37 +66,35 @@ class BulbCity(object):
 				time.sleep(0.8)
 			
 			item = self.queue.get()
-			print("{0:<3}".format(item), end=' ')
+			print("{0:<3}".format(item), end = ' ')
 			self.queue.task_done()
 		return
 	
 	def conduct(self, source, dest):
 		while self.electricity.is_set():
-			self.bulb[source].acquire()
+			self.bulbs[source].acquire()
 			
 			self.queue.put(dest)
 			time.sleep(1)
 			
-			self.bulb[dest].release()
+			self.bulbs[dest].release()
 		return
 	
 	def supply(self, list):
-		self.thread_num = len(list)
-		
 		for i in list:
-			self.bulb[i].release()
+			self.bulbs[i].release()
 		return
 	
 	def power_cut(self):
 		self.electricity.clear()
-		for bulb in self.bulb:
+		for bulb in self.bulbs:
 			bulb.release()
 		
 		for thread in self.threads:
 			thread.join()
-		return
-		
-# End # BulbCity
+		return		
+# BulbCity
+
 
 def main():
 	try:

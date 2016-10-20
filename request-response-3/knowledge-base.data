@@ -1,0 +1,19 @@
+- ".*Hi.*", "Hello!"
+
+- ".*(?:W|w)hat is your name\?", "I was named T-Bot but i don't know why! :("
+
+- ".*(?:M|m)y name is (?P<name>\w+).*", "Nice to meet you \g<name>!"
+
+- ".*(?:M|m)y name is Zigger.*", "You are not welcome Zigger!"
+
+- ".*(?:W|w)ho is your boss\?.*", "I have no boss, Clite is my creator! He is my best friend!"
+
+- ".*(?:W|w)ho (?:is your creator|created you)\?.*", "My creator is Clite Tailor"
+
+- ".*(?:W|w)hen was you born\?.*", "I was born in the 25th of August, 2016"
+
+- ".*(?:W|w)here (?:are you living|was you live)\?.*", "Laptop is my home, my best home until now!"
+
+- ".*", "I'm sorry! I was not programmed to answer this question! :("
+
+- ".*What is your favorite (?P<type>fruit|food|drink)?.*", "Electricity is my favorite \g<type>"
